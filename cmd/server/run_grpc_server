@@ -1,0 +1,2 @@
+#gcloud sql connect mysql-1 --user=root --password=test123
+./server -grpc-port=9090 -db-host=:3306 -db-user=test -db-password=test123 -db-schema=TestToDo
