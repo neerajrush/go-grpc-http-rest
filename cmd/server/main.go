@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/neerajrush/go-grpc-http-rest/pkg/cmd"
+	server "github.com/neerajrush/go-grpc-http-rest/pkg/cmd/server"
 )
 
 func main() {
-	if err := cmd.RunServer(); err != nil {
+	if err := server.RunServer(); err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)
 	}
