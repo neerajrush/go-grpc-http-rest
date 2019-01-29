@@ -9,8 +9,8 @@ import (
 	// mysql driver
 	_ "github.com/go-sql-driver/mysql"
 
-	"github.com/amsokol/go-grpc-http-rest-microservice-tutorial/pkg/protocol/grpc"
-	"github.com/amsokol/go-grpc-http-rest-microservice-tutorial/pkg/service/v1"
+	"github.com/neerajrush/go-grpc-http-rest/pkg/protocol/grpc"
+	"github.com/neerajrush/go-grpc-http-rest/pkg/service/v1"
 )
 
 // Config is configuration for Server
