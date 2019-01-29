@@ -7,11 +7,12 @@ import (
 	"os/signal"
 	"time"
 
-	"go.uber.org/zap"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"google.golang.org/grpc"
-	"github.com/neerajrush/go-grpc-http-rest/pkg/logger"
 	"github.com/neerajrush/go-grpc-http-rest/pkg/api/v1"
+	"github.com/neerajrush/go-grpc-http-rest/pkg/logger"
+	"github.com/neerajrush/go-grpc-http-rest/pkg/protocol/rest/middleware"
+	"go.uber.org/zap"
+	"google.golang.org/grpc"
 )
 
 // RunServer runs HTTP/REST gateway
@@ -26,8 +27,10 @@ func RunServer(ctx context.Context, grpcPort, httpPort string) error {
 	}
 
 	srv := &http.Server{
-		Addr:    ":" + httpPort,
-		Handler: mux,
+		Addr: ":" + httpPort,
+		// add handler with middleware
+		Handler: middleware.AddRequestID(
+			middleware.AddLogger(logger.Log, mux)),
 	}
 
 	// graceful shutdown
