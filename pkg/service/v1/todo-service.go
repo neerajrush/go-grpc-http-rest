@@ -62,6 +62,7 @@ func (s *toDoServiceServer) Create(ctx context.Context, req *v1.CreateRequest) (
 		return nil, err
 	}
 	defer c.Close()
+	fmt.Printf("Inserting db record with values: req: %v:", req.ToDo)
 
 	reminder, err := ptypes.Timestamp(req.ToDo.Reminder)
 	if err != nil {
